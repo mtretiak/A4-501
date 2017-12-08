@@ -385,8 +385,8 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < maxSizePow2; i++)
 	{
 		temp = i+i;
-		double x = complesInput[i];
-		double k = complesInput[i+1];
+		double x = complexInput[i];
+		double k = complexInput[i+1];
 		double IR1 = complexIR[i];
 		double IR2 = complexIR[i + 1];
 		complexOutput[temp] = x * IR1 - k * IR2;
