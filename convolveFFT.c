@@ -376,7 +376,9 @@ int main(int argc, char* argv[])
 
 	// complex multiplication of the input and ir response
 	//Code Tunning preformed: Jamming/Fusion
-	//Code Tunning: Strength reduction (replaced multiplication with addition)
+	//Code Tunning: Strength reduction (replaced multiplication with addition
+	//Code Tunning: Minimize array references.
+	//possible ability to unroll here?
 	int temp;
 	for (int i = 0; i < maxSizePow2; i++)
 	{
