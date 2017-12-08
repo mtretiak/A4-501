@@ -379,16 +379,18 @@ int main(int argc, char* argv[])
 	//Code Tunning: Strength reduction (replaced multiplication with addition
 	//Code Tunning: Minimize array references.
 	//possible ability to unroll here?
+
+	//code tuning: minimizing array references
 	int temp;
 	for (int i = 0; i < maxSizePow2; i++)
 	{
 		temp = i+i;
-		complexOutput[temp] = complexInput[i] * complexIR[i] - complexInput[i + 1] * complexIR[i + 1];
-	// }
-  //
-	// for (int i = 0; i < maxSizePow2; i++)
-	// {
-		complexOutput[temp + 1] = complexInput[i + 1] * complexIR[i] + complexInput[i] * complexIR[i + 1];
+		double x = complesInput[i];
+		double k = complesInput[i+1];
+		double IR1 = complexIR[i];
+		double IR2 = complexIR[i + 1];
+		complexOutput[temp] = x * IR1 - k * IR2;
+		complexOutput[temp + 1] = k * IR1 + x * IR2;
 	}
 
 
