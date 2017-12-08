@@ -189,13 +189,11 @@ int saveWave(char* filename, double outputSignal[], int sampleCount)
 		float maxSample = -1;
 		float MAX_VAL = 32767.f;
 
+		//Code Tunning: Minimizing work in loop
+		maxSample = outputSignal[0];
 		for (int i = 0; i < sampleCount; i++)
 		{
-			if (i == 0)
-			{
-				maxSample = outputSignal[0];
-			}
-			else if (outputSignal[i] > maxSample)
+			if (outputSignal[i] > maxSample)
 			{
 				maxSample = outputSignal[i];
 			}
