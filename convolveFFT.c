@@ -376,14 +376,17 @@ int main(int argc, char* argv[])
 
 	// complex multiplication of the input and ir response
 	//Code Tunning preformed: Jamming/Fusion
+	//Code Tunning: Strength reduction (replaced multiplication with addition)
+	int temp;
 	for (int i = 0; i < maxSizePow2; i++)
 	{
-		complexOutput[i * 2] = complexInput[i] * complexIR[i] - complexInput[i + 1] * complexIR[i + 1];
+		temp = i+i;
+		complexOutput[temp] = complexInput[i] * complexIR[i] - complexInput[i + 1] * complexIR[i + 1];
 	// }
   //
 	// for (int i = 0; i < maxSizePow2; i++)
 	// {
-		complexOutput[i * 2 + 1] = complexInput[i + 1] * complexIR[i] + complexInput[i] * complexIR[i + 1];
+		complexOutput[temp + 1] = complexInput[i + 1] * complexIR[i] + complexInput[i] * complexIR[i + 1];
 	}
 
 
