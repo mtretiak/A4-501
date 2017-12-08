@@ -355,13 +355,16 @@ int main(int argc, char* argv[])
 
 	//rewrite every other array element for real part
 	//unable to jamm here as different counters
-	for (int i = 0; i < number_Samples; i++)
+	//Code Tuning: Partial unrolling
+	for (int i = 0; i < number_Samples - 1; i += 2)
 	{
 		complexInput[2 * i] = ((double)data[i]) / 32767.0;
+		complexInput[(i + 1) * 2] = ((double)data[i + 1]) / 32767.0;
 	}
-	for (int i = 0; i < number_SamplesIR; i++)
+	for (int i = 0; i < number_SamplesIR - 1; i+=2)
 	{
 		complexIR[2 * i] = ((double)dataIR[i]) / 32767.0;
+		complexIR[2 * (i + 1)] = ((double)dataIR[i + 1]) / 32767.0;
 	}
 
   //Time Domain Transofmation using provided four1
